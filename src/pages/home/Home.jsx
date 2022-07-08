@@ -78,8 +78,8 @@ export default function Home() {
   //renders search actions, (search input & sort dropdown)
   // sort dropdown is only visible after searching
   const renderSearchActions = () => (
-    <div className="flex flex-col md:flex-row w-full h-auto justify-between items-end mb-2">
-      <div className="flex flex-row border border-gray-300 hover:border-gray-400 focus:border-gray-600 rounded">
+    <div className="flex flex-col-reverse md:flex-row w-full h-auto justify-between items-end mb-2">
+      <div className="flex flex-row border border-gray-300 hover:border-gray-400 focus:border-gray-600 rounded mt-4 md:mt-0">
         <button
           data-testid="home-search-icon"
           type="button"
@@ -90,19 +90,19 @@ export default function Home() {
         </button>
         <input
           data-testid="home-search-input"
-          className="focus:outline-none py-2 px-4 font-normal w-full md:w-auto mb-3 md:mb-0"
+          className="focus:outline-none py-2 px-4 font-normal w-full md:w-auto"
           type="text"
           placeholder="Search..."
           onKeyDown={handleSearchOnKeyDown}
         />
       </div>
       {search !== "" && (
-        <div>
-          <h3 className="text-sm">Sort by:</h3>
+        <div className="flex flex-row items-center">
+          <h3 className="text-sm mr-4">Sort by:</h3>
           <select
             data-testid="home-sort-dropdown"
             id="small"
-            className="dropdown:block focus:shadow-outline relative h-full w-full md:w-auto rounded border border-gray-300 bg-white px-3 py-2 text-sm font-normal leading-relaxed text-gray-800 transition-colors duration-150 hover:border-gray-600 focus:border-gray-900 focus:outline-none"
+            className="dropdown:block focus:shadow-outline relative h-full w-auto rounded border border-gray-300 bg-white px-3 py-2 text-sm font-normal leading-relaxed text-gray-800 transition-colors duration-150 hover:border-gray-600 focus:border-gray-900 focus:outline-none"
             onChange={handleOnClickSort}
             defaultValue={"newest"}
             value={sortBy}
@@ -134,7 +134,7 @@ export default function Home() {
   //renders the page contents
   //if isLoading = render skeleton card, if is not loading render newsCard with the articles's details
   const renderContents = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-10 mt-10">
+    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-10 mt-10">
       {/* While the api is loading, render SkeletonCard for lazy loading */}
       {isLoading &&
         [...Array(8)].map((x, i) => (

@@ -14,6 +14,7 @@ const Article = () => {
     urlToImage = "",
     publishedAt = "",
     content = "",
+    description = "",
   } = articles[id] ?? {};
 
   useEffect(() => {
@@ -70,12 +71,14 @@ const Article = () => {
   );
 
   //renders the article's content
-  const renderContent = () => <p className="mt-[3rem] text-lg">{content}</p>;
+  const renderContent = () => (
+    <p className="mt-[3rem] text-lg">{content ?? description}</p>
+  );
 
   return (
     <div
       data-testid="article-page"
-      className="flex flex-col w-screen px-[30rem] pt-[3rem]"
+      className="flex flex-col w-screen px-[2rem] md:px-[10rem] lg:px-[10rem] xl:px-[15rem] 2xl:px-[25rem] pt-[3rem]"
     >
       {renderArticleImage()}
       {renderBreadCrumbs()}
